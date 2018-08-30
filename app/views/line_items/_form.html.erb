@@ -1,0 +1,14 @@
+
+<%= simple_form_for(@line_item) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :store %>
+    <%= f.association :kitten %>
+    <%= f.association :cart %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

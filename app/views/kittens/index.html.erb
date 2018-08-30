@@ -1,0 +1,36 @@
+ <% content_for :header do %>
+<section class='here is-warning'>
+<div class='hero-body'>
+<div class='container'>
+<h1 class='title>
+Visitez les chatons les loulounina
+</h1>
+</div>
+</div>
+</section>
+  
+<% end %>%
+  <div class='kitten-index-grid pt4'>
+  <% @kittens.each do |kitten|%>
+  <div class='kitten border-light>
+  <div class='kitten-thumb'>
+  <%= link_to image_tag(kitten.image_url(:thumb)), kitten%>
+  <%if kitten.condition?%>
+     <div class='condition'>
+  <span class='tag is-dark'><%= kitten.condition%></span>
+  </div>
+  <%end%>
+  </div>
+  <div class='pa3'>
+  <h3 class='fw7 f4 title'><%= link_to kitten.title, kitten %></h3>
+  <p class='has-text-gray fg pt1'>vendu par<%= kitten.user.name %></p>
+  <p class='f3 fw6 has-text-right pt2 price'><%= number_to_currency(kitten.price) %></p>
+  <% if kitten_author(kitten)%>
+  <%= link_to 'Edit', edit_kitten_path(kitten), class: 'button is-small'%>
+  <%= link_to 'Delete', kitten, method: :delete, data: { confirm: 'Are you sure?'}, class: 'button is-small' %>
+
+  </div>
+  </div>
+      <% end %>
+  </div>
+  <%end%>
